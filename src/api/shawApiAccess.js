@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const baseUrl = process.env.API || 'https://lk-shaw-server.herokuapp.com/api';
 
-const getUsers = () => axios.get(`${baseUrl}/users`)
+const getUsers = (since = 0) => axios.get(`${baseUrl}/users?since=${since}`)
   .then(response => response.data)
   .catch(() => []);
 

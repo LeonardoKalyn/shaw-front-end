@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Table, Glyphicon } from 'react-bootstrap';
 
 const Repos = ({ repos }) => (
-  <table>
+  <Table striped condensed hover>
     <thead>
       <tr>
         <th>Id</th>
@@ -15,11 +16,11 @@ const Repos = ({ repos }) => (
         <tr key={repo.id}>
           <td>{repo.id}</td>
           <td>{repo.name}</td>
-          <td><a href={repo.html_url}>{repo.html_url}</a></td>
+          <td><a href={repo.html_url}><Glyphicon glyph="share-alt" /></a></td>
         </tr>
       ))}
     </tbody>
-  </table>
+  </Table>
 );
 
 Repos.propTypes = {

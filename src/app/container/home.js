@@ -7,13 +7,24 @@ class HomeContainer extends Component {
     super(props);
     this.state = {
       users: [],
+      last: 30,
+      first: 0,
     };
+
+    this.getNextUsers = this.getNextUsers.bind(this);
   }
 
   componentWillMount() {
-    API.getUsers().then((users) => {
+    this.getNextUsers();
+  }
+
+  getNextUsers(next) {
+    const { last, first } = this.state;
+    API.getUsers(next ? last : first).then((newUsers) => {
       this.setState({
-        users: users.map(user => user.login),
+        users: newUsers.map(user => user.login),
+        last: newUsers[newUsers.length - 1].id - 1 || 0,
+        first: first - 30 > 0 ? first - 30 : 0,
       });
     });
   }
@@ -21,7 +32,7 @@ class HomeContainer extends Component {
   render() {
     const { users } = this.state;
 
-    return <Home users={users} />;
+    return <Home users={users} getNextUsers={this.getNextUsers} />;
   }
 }
 
