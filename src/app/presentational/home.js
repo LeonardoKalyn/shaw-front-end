@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router';
 import { ListGroup, ListGroupItem, Pager } from 'react-bootstrap';
 
 const Home = ({ users, getNextUsers }) => {
@@ -35,4 +34,4 @@ Home.propTypes = {
   users: PropTypes.array.isRequired,
   getNextUsers: PropTypes.func.isRequired,
 };
-export default withRouter(Home);
+export default Home;

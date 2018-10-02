@@ -1,9 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Well, Navbar, PageHeader } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import Home from 'container/home';
 import User from 'container/user';
+import NoMatch from 'presentational/noMatch';
 
 const App = () => (
   <div>
@@ -22,8 +23,11 @@ const App = () => (
           </Navbar.Header>
         </Navbar>
         <Well>
-          <Route exact path="/" component={Home} />
-          <Route path="/users/:username" component={User} />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/users/:username" component={User} />
+            <Route component={NoMatch} />
+          </Switch>
         </Well>
       </Well>
     </Router>

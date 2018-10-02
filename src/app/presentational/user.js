@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router';
 import Repos from 'presentational/repos';
 import { Panel, Label } from 'react-bootstrap';
 
@@ -62,4 +61,4 @@ User.defaultProps = {
   },
 };
 
-export default withRouter(User);
+export default User;
