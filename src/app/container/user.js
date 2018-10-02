@@ -8,19 +8,23 @@ class UserContainer extends Component {
     super(props);
     this.state = {
       user: {},
+      repos: [],
     };
   }
 
   componentWillMount() {
     const { match } = this.props;
-    API.getUser(match.params.username)
-      .then(user => this.setState({user}));
+    const { username } = match.params;
+    API.getUser(username)
+      .then(user => this.setState({ user }));
+    API.getRepos(username)
+      .then(repos => this.setState({ repos }));
   }
 
   render() {
-    const { user } = this.state;
+    const { user, repos } = this.state;
 
-    return <User user={user} />;
+    return <User user={user} repos={repos} />;
   }
 }
 

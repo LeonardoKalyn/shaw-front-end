@@ -5,7 +5,7 @@ const Home = ({ users }) => {
   const linkToUser = user => <Link to={`/users/${user}`}>{user}</Link>;
 
   return users.map(user => (
-    <li>{linkToUser(user)}</li>
+    <li key={user}>{linkToUser(user)}</li>
   ));
 };
 
