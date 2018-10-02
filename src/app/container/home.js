@@ -6,13 +6,12 @@ class HomeContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: ['Leonardo', 'Kalyn', 'Lyan', 'Nylk'],
+      users: [],
     };
   }
 
   componentWillMount() {
     API.getUsers().then((users) => {
-      console.log(users);
       this.setState({
         users: users.map(user => user.login),
       });

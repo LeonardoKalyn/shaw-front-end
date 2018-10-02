@@ -1,9 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Home = ({ users }) => {
-  console.log(users);
+  const linkToUser = user => <Link to={`/users/${user}`}>{user}</Link>;
+
   return users.map(user => (
-    <li>{ user }</li>
+    <li>{linkToUser(user)}</li>
   ));
 };
 
