@@ -15,6 +15,7 @@ module.exports = {
   },
   resolve: {
     alias: {
+      api: path.join(__dirname, 'src/api/'),
       container: path.join(__dirname, 'src/app/container/'),
       presentational: path.join(__dirname, 'src/app/presentational/'),
     },
